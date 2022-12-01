@@ -7,6 +7,7 @@ function BotsPage() {
 
   const [bots, setBots] = useState([])
   const [army, setArmy] = useState([])
+  const [enlisted, setEnlisted] = useState([])
 
   useEffect(() => {
     const request = async () => {
@@ -23,14 +24,21 @@ function BotsPage() {
 
     if (army.includes(bot)) return
     setArmy([...army, bot])
-    console.log(army)
-  }
+    // console.log(army)
+    // setBots(bots.filter((unit) => { unit.id !== bot.id }))
 
+    setEnlisted([...enlisted, bot])
+  }
 
   return (
     <div>
+      <label> Sort by health:</label>
+      < select>
+        <option>1</option>
+        <option>2</option>
+      </select>
       <YourBotArmy army={army} setArmy={setArmy} setBots={setBots} />
-      <BotCollection bots={bots} setBots={setBots} army={army} setArmy={setArmy} handleArmy={handleArmy} />
+      <BotCollection bots={bots} setBots={setBots} army={army} setArmy={setArmy} handleArmy={handleArmy} enlisted={enlisted} setEnlisted={setEnlisted} />
     </div>
   )
 }

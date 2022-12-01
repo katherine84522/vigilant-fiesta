@@ -1,7 +1,11 @@
 import React from "react";
 import BotSpecs from './BotSpecs'
 
-function BotCollection({ bots, setBots, handleArmy }) {
+function BotCollection({ bots, setBots, handleArmy, enlisted, setEnlisted }) {
+
+  // const notEnlisted = bots.filter((unit) => unit !== enlisted)
+
+
   // Your code here
   return (
     <div className="ui four column grid">

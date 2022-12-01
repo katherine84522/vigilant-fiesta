@@ -11,62 +11,38 @@ const botTypeClasses = {
 
 function BotSpecs({ bot, setBots, army, setArmy, handleArmy }) {
   return (
-    <div className="ui segment">
-      <div className="ui two column centered grid">
-        <div className="row">
-          <div className="four wide column">
-            <img
-              alt="oh no!"
-              className="ui medium circular image bordered"
-              src={bot.avatar_url}
-            />
+    <div className="ui column"  >
+      <div
+        className="ui card"
+        key={bot.id}
+        onClick={() => { handleArmy(bot) }}
+      >
+        <div className="image">
+          <img alt="oh no!" src={bot.avatar_url} />
+        </div>
+        <div className="content">
+          <div className="header">
+            {bot.name}
+            <i className={botTypeClasses[bot.bot_class]} />
           </div>
-          <div className="four wide column">
-            <h2>Name: {bot.name}</h2>
-            <p>
-              <strong>Catchphrase: </strong>
-              {bot.catchphrase}
-            </p>
-            <strong>
-              Class: {bot.bot_class}
-              <i className={botTypeClasses[bot.bot_class]} />
-            </strong>
-            <br />
-            <div className="ui segment">
-              <div className="ui three column centered grid">
-                <div className="row">
-                  <div className="column">
-                    <i className="icon large circular red heartbeat" />
-                    <strong>{bot.health}</strong>
-                  </div>
-                  <div className="column">
-                    <i className="icon large circular yellow lightning" />
-                    <strong>{bot.damage}</strong>
-                  </div>
-                  <div className="column">
-                    <i className="icon large circular blue shield" />
-                    <strong>{bot.armor}</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button
-              className="ui button fluid"
-              onClick={() =>
-                console.log('show all bots')
-              }
-            >
-              Go Back
-            </button>
-            <button
-              className="ui button fluid"
-              onClick={() =>
-                handleArmy(bot)
-              }
-            >
-              Enlist
-            </button>
+          <div className="meta text-wrap">
+            <small>{bot.catchphrase}</small>
           </div>
+        </div>
+        <div className="extra content">
+          <span>
+            <i className="icon heartbeat" />
+            {bot.health}
+          </span>
+
+          <span>
+            <i className="icon lightning" />
+            {bot.damage}
+          </span>
+          <span>
+            <i className="icon shield" />
+            {bot.armor}
+          </span>
         </div>
       </div>
     </div>
